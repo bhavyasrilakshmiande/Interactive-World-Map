@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>World Population Map</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Interactive World Map Population Census</h1>
+
+<div id="map-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+         alt="World Map" id="worldMap">
+</div>
+
+<div id="info">
+    <h2>Country Information</h2>
+    <p id="country">Click a country name below</p>
+</div>
+
+<div class="buttons">
+    <button onclick="showPopulation('India', '1.43 Billion')">India</button>
+    <button onclick="showPopulation('USA', '340 Million')">USA</button>
+    <button onclick="showPopulation('China', '1.41 Billion')">China</button>
+    <button onclick="showPopulation('Brazil', '216 Million')">Brazil</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
