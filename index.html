@@ -1,30 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>World Population Map</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive World Population Census</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#74ebd5,#ACB6E5);
+    text-align:center;
+    margin:0;
+}
+
+h1{
+    color:#fff;
+    padding:20px;
+}
+
+#map{
+    width:90%;
+    max-width:900px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+#info{
+    width:80%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.buttons{
+    width:90%;
+    margin:auto;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    padding-bottom:20px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#2196F3;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#ff5722;
+    transform:scale(1.05);
+}
+</style>
 </head>
 <body>
 
-<h1>Interactive World Map Population Census</h1>
+<h1>🌍 Interactive World Population Census</h1>
 
-<div id="map-container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
-         alt="World Map" id="worldMap">
-</div>
+<img id="map"
+src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+alt="World Map">
 
 <div id="info">
-    <h2>Country Information</h2>
-    <p id="country">Click a country name below</p>
+<h2>Country Information</h2>
+<p>Click a country button below</p>
 </div>
 
 <div class="buttons">
-    <button onclick="showPopulation('India', '1.43 Billion')">India</button>
-    <button onclick="showPopulation('USA', '340 Million')">USA</button>
-    <button onclick="showPopulation('China', '1.41 Billion')">China</button>
-    <button onclick="showPopulation('Brazil', '216 Million')">Brazil</button>
+
+<button onclick="showInfo('India','1.43 Billion')">India</button>
+<button onclick="showInfo('China','1.41 Billion')">China</button>
+<button onclick="showInfo('USA','340 Million')">USA</button>
+<button onclick="showInfo('Brazil','216 Million')">Brazil</button>
+<button onclick="showInfo('Russia','144 Million')">Russia</button>
+<button onclick="showInfo('Japan','124 Million')">Japan</button>
+<button onclick="showInfo('Germany','84 Million')">Germany</button>
+<button onclick="showInfo('France','65 Million')">France</button>
+<button onclick="showInfo('United Kingdom','68 Million')">UK</button>
+<button onclick="showInfo('Canada','40 Million')">Canada</button>
+<button onclick="showInfo('Australia','27 Million')">Australia</button>
+<button onclick="showInfo('Pakistan','241 Million')">Pakistan</button>
+<button onclick="showInfo('Bangladesh','173 Million')">Bangladesh</button>
+<button onclick="showInfo('Indonesia','278 Million')">Indonesia</button>
+<button onclick="showInfo('Nigeria','223 Million')">Nigeria</button>
+<button onclick="showInfo('Mexico','129 Million')">Mexico</button>
+<button onclick="showInfo('South Africa','62 Million')">South Africa</button>
+<button onclick="showInfo('Italy','59 Million')">Italy</button>
+<button onclick="showInfo('Spain','48 Million')">Spain</button>
+<button onclick="showInfo('Argentina','46 Million')">Argentina</button>
+
 </div>
 
-<script src="script.js"></script>
+<script>
+function showInfo(country,population){
+document.getElementById("info").innerHTML=
+`
+<h2>${country}</h2>
+<p><strong>Population:</strong> ${population}</p>
+`;
+}
+</script>
+
 </body>
 </html>
