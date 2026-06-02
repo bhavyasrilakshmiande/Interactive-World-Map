@@ -6,57 +6,69 @@
 <title>Interactive World Population Census</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#74ebd5,#ACB6E5);
-    text-align:center;
-    margin:0;
+background:linear-gradient(135deg,#74ebd5,#ACB6E5);
+text-align:center;
+padding:20px;
 }
 
 h1{
-    color:#fff;
-    padding:20px;
+color:white;
+margin-bottom:20px;
 }
 
 #map{
-    width:90%;
-    max-width:900px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,0.3);
+width:90%;
+max-width:900px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 #info{
-    width:80%;
-    margin:20px auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.2);
+width:90%;
+max-width:700px;
+margin:20px auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+#info img{
+width:120px;
+margin:10px 0;
+border:1px solid #ddd;
 }
 
 .buttons{
-    width:90%;
-    margin:auto;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    padding-bottom:20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-top:20px;
 }
 
 button{
-    padding:10px 15px;
-    border:none;
-    border-radius:8px;
-    background:#2196F3;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
+padding:10px 15px;
+border:none;
+border-radius:8px;
+background:#2196F3;
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-    background:#ff5722;
-    transform:scale(1.05);
+background:#ff5722;
+transform:scale(1.05);
 }
 </style>
 </head>
@@ -65,45 +77,69 @@ button:hover{
 <h1>🌍 Interactive World Population Census</h1>
 
 <img id="map"
-src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+src="https://upload.wikimedia.org/wikipedia/commons/1/17/World_map_2004_CIA_large_2m.jpg"
 alt="World Map">
 
 <div id="info">
-<h2>Country Information</h2>
-<p>Click a country button below</p>
+<h2>Select a Country</h2>
+<p>Click any country button below</p>
 </div>
 
 <div class="buttons">
 
-<button onclick="showInfo('India','1.43 Billion')">India</button>
-<button onclick="showInfo('China','1.41 Billion')">China</button>
-<button onclick="showInfo('USA','340 Million')">USA</button>
-<button onclick="showInfo('Brazil','216 Million')">Brazil</button>
-<button onclick="showInfo('Russia','144 Million')">Russia</button>
-<button onclick="showInfo('Japan','124 Million')">Japan</button>
-<button onclick="showInfo('Germany','84 Million')">Germany</button>
-<button onclick="showInfo('France','65 Million')">France</button>
-<button onclick="showInfo('United Kingdom','68 Million')">UK</button>
-<button onclick="showInfo('Canada','40 Million')">Canada</button>
-<button onclick="showInfo('Australia','27 Million')">Australia</button>
-<button onclick="showInfo('Pakistan','241 Million')">Pakistan</button>
-<button onclick="showInfo('Bangladesh','173 Million')">Bangladesh</button>
-<button onclick="showInfo('Indonesia','278 Million')">Indonesia</button>
-<button onclick="showInfo('Nigeria','223 Million')">Nigeria</button>
-<button onclick="showInfo('Mexico','129 Million')">Mexico</button>
-<button onclick="showInfo('South Africa','62 Million')">South Africa</button>
-<button onclick="showInfo('Italy','59 Million')">Italy</button>
-<button onclick="showInfo('Spain','48 Million')">Spain</button>
-<button onclick="showInfo('Argentina','46 Million')">Argentina</button>
+<button onclick="showInfo('India','1.43 Billion','New Delhi','https://flagcdn.com/w320/in.png')">India</button>
+
+<button onclick="showInfo('China','1.41 Billion','Beijing','https://flagcdn.com/w320/cn.png')">China</button>
+
+<button onclick="showInfo('USA','340 Million','Washington D.C.','https://flagcdn.com/w320/us.png')">USA</button>
+
+<button onclick="showInfo('Brazil','216 Million','Brasília','https://flagcdn.com/w320/br.png')">Brazil</button>
+
+<button onclick="showInfo('Russia','144 Million','Moscow','https://flagcdn.com/w320/ru.png')">Russia</button>
+
+<button onclick="showInfo('Japan','124 Million','Tokyo','https://flagcdn.com/w320/jp.png')">Japan</button>
+
+<button onclick="showInfo('Germany','84 Million','Berlin','https://flagcdn.com/w320/de.png')">Germany</button>
+
+<button onclick="showInfo('France','65 Million','Paris','https://flagcdn.com/w320/fr.png')">France</button>
+
+<button onclick="showInfo('United Kingdom','68 Million','London','https://flagcdn.com/w320/gb.png')">UK</button>
+
+<button onclick="showInfo('Canada','40 Million','Ottawa','https://flagcdn.com/w320/ca.png')">Canada</button>
+
+<button onclick="showInfo('Australia','27 Million','Canberra','https://flagcdn.com/w320/au.png')">Australia</button>
+
+<button onclick="showInfo('Pakistan','241 Million','Islamabad','https://flagcdn.com/w320/pk.png')">Pakistan</button>
+
+<button onclick="showInfo('Bangladesh','173 Million','Dhaka','https://flagcdn.com/w320/bd.png')">Bangladesh</button>
+
+<button onclick="showInfo('Indonesia','278 Million','Jakarta','https://flagcdn.com/w320/id.png')">Indonesia</button>
+
+<button onclick="showInfo('Nigeria','223 Million','Abuja','https://flagcdn.com/w320/ng.png')">Nigeria</button>
+
+<button onclick="showInfo('Mexico','129 Million','Mexico City','https://flagcdn.com/w320/mx.png')">Mexico</button>
+
+<button onclick="showInfo('South Africa','62 Million','Pretoria','https://flagcdn.com/w320/za.png')">South Africa</button>
+
+<button onclick="showInfo('Italy','59 Million','Rome','https://flagcdn.com/w320/it.png')">Italy</button>
+
+<button onclick="showInfo('Spain','48 Million','Madrid','https://flagcdn.com/w320/es.png')">Spain</button>
+
+<button onclick="showInfo('Argentina','46 Million','Buenos Aires','https://flagcdn.com/w320/ar.png')">Argentina</button>
 
 </div>
 
 <script>
-function showInfo(country,population){
-document.getElementById("info").innerHTML=
-`
+function showInfo(country,population,capital,flag){
+
+document.getElementById("info").innerHTML = `
 <h2>${country}</h2>
+
+<img src="${flag}" alt="${country} Flag">
+
 <p><strong>Population:</strong> ${population}</p>
+
+<p><strong>Capital:</strong> ${capital}</p>
 `;
 }
 </script>
