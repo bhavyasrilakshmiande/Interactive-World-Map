@@ -6,58 +6,78 @@
 <title>Interactive World Population Census</title>
 
 <style>
-body{
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
-    text-align:center;
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#74ebd5,#acb6e5);
+    text-align:center;
     padding:20px;
 }
 
 h1{
     color:white;
+    margin-bottom:20px;
 }
 
 #map{
     width:95%;
     max-width:1000px;
     border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
 #info{
     background:white;
-    max-width:800px;
+    max-width:900px;
     margin:20px auto;
-    padding:20px;
+    padding:25px;
     border-radius:15px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 #info img{
-    width:120px;
+    width:150px;
+    border-radius:10px;
     margin:10px;
+}
+
+.country-name{
+    font-size:32px;
+    margin:10px 0;
+}
+
+.details{
+    font-size:20px;
+    margin:8px 0;
 }
 
 .buttons{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:10px;
+    gap:12px;
+    margin-top:20px;
 }
 
 button{
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
     background:#2196f3;
     color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:8px;
     cursor:pointer;
     font-weight:bold;
+    transition:0.3s;
 }
 
 button:hover{
     background:#ff5722;
+    transform:scale(1.05);
 }
 </style>
 </head>
@@ -65,40 +85,57 @@ button:hover{
 
 <h1>🌍 Interactive World Population Census</h1>
 
+<!-- Replace this image with any colorful world map you download -->
 <img id="map"
-src="https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular-projection.jpg"
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1280px-World_map_-_low_resolution.svg.png"
 alt="World Map">
 
 <div id="info">
-<h2>Select a Country</h2>
-<p>Click any country button below</p>
+<h2>Country Information</h2>
+<p class="details">Select a country below</p>
 </div>
 
 <div class="buttons">
 
 <button onclick="showInfo('India','1.43 Billion','New Delhi','Asia','https://flagcdn.com/w320/in.png')">India</button>
 
-<button onclick="showInfo('USA','340 Million','Washington D.C.','North America','https://flagcdn.com/w320/us.png')">USA</button>
-
 <button onclick="showInfo('China','1.41 Billion','Beijing','Asia','https://flagcdn.com/w320/cn.png')">China</button>
 
+<button onclick="showInfo('USA','340 Million','Washington D.C.','North America','https://flagcdn.com/w320/us.png')">USA</button>
+
 <button onclick="showInfo('Brazil','216 Million','Brasilia','South America','https://flagcdn.com/w320/br.png')">Brazil</button>
+
+<button onclick="showInfo('Russia','144 Million','Moscow','Europe/Asia','https://flagcdn.com/w320/ru.png')">Russia</button>
 
 <button onclick="showInfo('Japan','124 Million','Tokyo','Asia','https://flagcdn.com/w320/jp.png')">Japan</button>
 
 <button onclick="showInfo('Germany','84 Million','Berlin','Europe','https://flagcdn.com/w320/de.png')">Germany</button>
 
-<button onclick="showInfo('Australia','27 Million','Canberra','Australia','https://flagcdn.com/w320/au.png')">Australia</button>
+<button onclick="showInfo('France','65 Million','Paris','Europe','https://flagcdn.com/w320/fr.png')">France</button>
+
+<button onclick="showInfo('UK','68 Million','London','Europe','https://flagcdn.com/w320/gb.png')">UK</button>
 
 <button onclick="showInfo('Canada','40 Million','Ottawa','North America','https://flagcdn.com/w320/ca.png')">Canada</button>
+
+<button onclick="showInfo('Australia','27 Million','Canberra','Australia','https://flagcdn.com/w320/au.png')">Australia</button>
 
 <button onclick="showInfo('Pakistan','241 Million','Islamabad','Asia','https://flagcdn.com/w320/pk.png')">Pakistan</button>
 
 <button onclick="showInfo('Bangladesh','173 Million','Dhaka','Asia','https://flagcdn.com/w320/bd.png')">Bangladesh</button>
 
+<button onclick="showInfo('Indonesia','278 Million','Jakarta','Asia','https://flagcdn.com/w320/id.png')">Indonesia</button>
+
 <button onclick="showInfo('Nigeria','223 Million','Abuja','Africa','https://flagcdn.com/w320/ng.png')">Nigeria</button>
 
+<button onclick="showInfo('Mexico','129 Million','Mexico City','North America','https://flagcdn.com/w320/mx.png')">Mexico</button>
+
 <button onclick="showInfo('South Africa','62 Million','Pretoria','Africa','https://flagcdn.com/w320/za.png')">South Africa</button>
+
+<button onclick="showInfo('Italy','59 Million','Rome','Europe','https://flagcdn.com/w320/it.png')">Italy</button>
+
+<button onclick="showInfo('Spain','48 Million','Madrid','Europe','https://flagcdn.com/w320/es.png')">Spain</button>
+
+<button onclick="showInfo('Argentina','46 Million','Buenos Aires','South America','https://flagcdn.com/w320/ar.png')">Argentina</button>
 
 </div>
 
@@ -106,13 +143,15 @@ alt="World Map">
 function showInfo(country,population,capital,continent,flag){
 
 document.getElementById("info").innerHTML = `
-<h2>${country}</h2>
 <img src="${flag}" alt="${country}">
-<p><b>Population:</b> ${population}</p>
-<p><b>Capital:</b> ${capital}</p>
-<p><b>Continent:</b> ${continent}</p>
-`;
+<div class="country-name">${country}</div>
 
+<div class="details"><b>Population:</b> ${population}</div>
+
+<div class="details"><b>Capital:</b> ${capital}</div>
+
+<div class="details"><b>Continent:</b> ${continent}</div>
+`;
 }
 </script>
 
